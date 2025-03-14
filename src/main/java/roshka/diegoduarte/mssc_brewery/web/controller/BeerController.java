@@ -10,7 +10,7 @@ import roshka.diegoduarte.mssc_brewery.web.model.BeerDto;
 import java.util.UUID;
 
 @Deprecated
-@RequestMapping("api/v1/beer")
+@RequestMapping("/api/v1/beer")
 @RestController
 public class BeerController {
 

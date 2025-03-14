@@ -9,7 +9,7 @@ import roshka.diegoduarte.mssc_brewery.web.model.v2.BeerDtoV2;
 
 import java.util.UUID;
 
-@RequestMapping("api/v2/beer")
+@RequestMapping("/api/v2/beer")
 @RestController
 public class BeerControllerV2 {
     private final BeerServiceV2 beerServiceV2;
