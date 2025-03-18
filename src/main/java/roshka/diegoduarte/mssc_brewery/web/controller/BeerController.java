@@ -1,5 +1,6 @@
 package roshka.diegoduarte.mssc_brewery.web.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class BeerController {
     }
 
     @PostMapping //post create new beer
-    public ResponseEntity<HttpHeaders> handlePost(@RequestBody BeerDto beerDto) {
+    public ResponseEntity<HttpHeaders> handlePost( @Valid @RequestBody BeerDto beerDto) {
         BeerDto saveDto = beerService.saveNewBeer(beerDto);
         HttpHeaders headers = new HttpHeaders();
         //todo add hostname to url
@@ -35,7 +36,7 @@ public class BeerController {
     }
 
     @PutMapping({"/{beerId}"})
-    public ResponseEntity<Void> handleUpdate(@PathVariable("beerId") UUID beerId, @RequestBody BeerDto beerDto) {
+    public ResponseEntity<Void> handleUpdate(@PathVariable("beerId") UUID beerId,@Valid @RequestBody BeerDto beerDto) {
         beerService.updateBeer(beerId,beerDto);
         return new  ResponseEntity<Void> (HttpStatus.NO_CONTENT);
     }

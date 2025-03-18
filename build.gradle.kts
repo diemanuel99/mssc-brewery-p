@@ -24,13 +24,21 @@ repositories {
 }
 
 dependencies {
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	implementation ("org.springframework.boot:spring-boot-starter-validation")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	//testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	// JUnit 5 (Jupiter)
+	testImplementation ("org.junit.jupiter:junit-jupiter-api")
+	testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine")
+	testImplementation ("org.mockito:mockito-core:5.16.0")
+	testImplementation ("org.mockito:mockito-junit-jupiter:5.16.0")
+	//database
+	runtimeOnly ("com.h2database:h2")
 }
 
 tasks.withType<Test> {
