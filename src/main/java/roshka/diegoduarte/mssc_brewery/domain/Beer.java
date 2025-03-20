@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import roshka.diegoduarte.mssc_brewery.web.model.v2.BeerStyleEnum;
 
+import java.sql.Timestamp;
 import java.util.UUID;
 
 @Data
@@ -17,4 +18,7 @@ public class Beer {
     private String beerName;
     private BeerStyleEnum beerStyle;
     private Long upc;
+
+    private Timestamp createdDate;
+    private Timestamp lastUpdatedDate;
 }

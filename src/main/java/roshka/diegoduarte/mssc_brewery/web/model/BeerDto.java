@@ -1,4 +1,5 @@
 package roshka.diegoduarte.mssc_brewery.web.model;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 import jakarta.validation.constraints.Positive;
@@ -22,4 +23,7 @@ public class BeerDto {
     private String beerStyle;
     @Positive
     private Long upc;
+
+    private OffsetDateTime createdDate;
+    private OffsetDateTime lastUpdatedDate;
 }
