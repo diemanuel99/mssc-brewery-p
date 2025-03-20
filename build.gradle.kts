@@ -3,6 +3,9 @@ plugins {
 	id("org.springframework.boot") version "3.3.9"
 	id("io.spring.dependency-management") version "1.1.7"
 }
+var mapstructVersion = "1.6.3"
+var lombokVersion = "1.18.36"
+var lombokMapstructBindingVersion = "0.2.0"
 
 group = "roshka.diegoduarte"
 version = "0.0.1-SNAPSHOT"
@@ -21,6 +24,7 @@ configurations {
 
 repositories {
 	mavenCentral()
+	mavenLocal()
 }
 
 dependencies {
@@ -29,7 +33,14 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	implementation ("org.springframework.boot:spring-boot-starter-validation")
-	annotationProcessor("org.projectlombok:lombok")
+
+	implementation ("org.mapstruct:mapstruct:${mapstructVersion}")
+	implementation ("org.projectlombok:lombok:${lombokVersion}")
+
+	annotationProcessor ("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+	annotationProcessor ("org.projectlombok:lombok:${lombokVersion}")
+	annotationProcessor ("org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	//testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	// JUnit 5 (Jupiter)
@@ -43,4 +54,7 @@ dependencies {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+tasks.withType<JavaCompile> {
+	options.compilerArgs.add("-Amapstruct.defaultComponentModel=spring")
 }
